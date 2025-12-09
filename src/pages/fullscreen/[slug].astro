@@ -1,0 +1,80 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'todo-app' } },
+    { params: { slug: 'weather-app' } },
+    { params: { slug: 'memory-game' } },
+    { params: { slug: 'landing-page' } },
+    { params: { slug: 'css-gallery' } },
+    { params: { slug: 'dashboard' } },
+    { params: { slug: 'ecommerce' } },
+  ];
+}
+
+const { slug } = Astro.params;
+
+const projectNames = {
+  'todo-app': 'Todo App',
+  'weather-app': 'Weather App',
+  'memory-game': 'Juego de Memoria',
+  'landing-page': 'Landing Page',
+  'css-gallery': 'Galería CSS',
+  'dashboard': 'Dashboard',
+  'ecommerce': 'E-commerce'
+};
+
+const title = projectNames[slug as keyof typeof projectNames] || 'Demo';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title} - Gabriel Martínez</title>
+  <style>
+    :root {
+      --primary: #6366f1;
+      --secondary: #8b5cf6;
+      --bg-dark: #0f172a;
+      --bg-card: #1e293b;
+      --text-light: #f1f5f9;
+      --text-gray: #94a3b8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .fullscreen-container {
+      width: 100%;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .demo-wrapper {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="fullscreen-container">
+    <div class="demo-wrapper">
+      <div id={`${slug}-demo`}></div>
+    </div>
+  </div>
+
+  <script is:inline src={`/demos/${slug}.js`}></script>
+</body>
+</html>
