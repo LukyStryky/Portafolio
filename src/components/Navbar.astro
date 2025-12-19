@@ -1,10 +1,11 @@
 ---
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <nav id="navbar">
     <div class="nav-container">
       <div class="nav-logo">
-        <a href="#hero">
+        <a href={baseUrl}>
           <span class="logo-bracket">{'<'}</span>
           <span class="logo-text">GM</span>
           <span class="logo-bracket">{'/>'}</span>
@@ -18,12 +19,12 @@
       </button>
   
       <ul class="nav-links" id="nav-links">
-        <li><a href="#hero" class="nav-link">Inicio</a></li>
-        <li><a href="#about" class="nav-link">Sobre mí</a></li>
-        <li><a href="#technologies" class="nav-link">Tecnologías</a></li>
-        <li><a href="#skills" class="nav-link">Habilidades</a></li>
-        <li><a href="#projects" class="nav-link">Proyectos</a></li>
-        <li><a href="#contact" class="nav-link">Contacto</a></li>
+        <li><a href={`${baseUrl}#hero`} class="nav-link">Inicio</a></li>
+        <li><a href={`${baseUrl}#about`} class="nav-link">Sobre mí</a></li>
+        <li><a href={`${baseUrl}#technologies`} class="nav-link">Tecnologías</a></li>
+        <li><a href={`${baseUrl}#skills`} class="nav-link">Habilidades</a></li>
+        <li><a href={`${baseUrl}#projects`} class="nav-link">Proyectos</a></li>
+        <li><a href={`${baseUrl}#contact`} class="nav-link">Contacto</a></li>
       </ul>
     </div>
   </nav>
@@ -195,6 +196,8 @@
   </style>
   
   <script>
+    const baseUrl = import.meta.env.BASE_URL;
+    
     // Navbar scroll effect
     const navbar = document.getElementById('navbar');
     
@@ -240,10 +243,10 @@
   
       links.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
+        const href = link.getAttribute('href');
+        if (href === `${baseUrl}#${current}`) {
           link.classList.add('active');
         }
       });
     });
   </script>
-  
