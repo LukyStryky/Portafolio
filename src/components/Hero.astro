@@ -1,4 +1,5 @@
 ---
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <section id="hero">
@@ -15,11 +16,11 @@
         <span class="highlight">Web</span> y <span class="highlight">Ciberseguridad</span>
       </p>
       <div class="cta-buttons">
-        <a href="#projects" class="btn btn-primary">
+        <a href={`${baseUrl}#projects`} class="btn btn-primary">
           <span>Ver Proyectos</span>
           <span class="btn-arrow">→</span>
         </a>
-        <a href="#contact" class="btn btn-secondary">
+        <a href={`${baseUrl}#contact`} class="btn btn-secondary">
           <span>Contacto</span>
           <span class="btn-icon">📧</span>
         </a>
@@ -64,7 +65,7 @@
   position: relative;
   overflow: hidden;
   padding: 2rem 0;
-  padding-top: 80px; /* ← AÑADE ESTO para compensar el navbar */
+  padding-top: 80px;
 }
 
   .hero-content {
